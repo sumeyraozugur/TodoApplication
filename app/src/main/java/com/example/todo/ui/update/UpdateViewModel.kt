@@ -16,7 +16,6 @@ class UpdateViewModel(application: Application): AndroidViewModel(application) {
     init {
         val todoDao = TodoDatabase.getDatabase(application).todoDao()
         repository = TodoRepository(todoDao)
-
     }
 
     fun updateTodo(todo: TodoModel){

@@ -12,3 +12,11 @@ fun Navigation.sent(v: View, id: Int) {
 fun Context.showToast(message: CharSequence) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}

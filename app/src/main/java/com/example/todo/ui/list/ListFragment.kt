@@ -11,8 +11,10 @@ import com.example.todo.databinding.FragmentListBinding
 import com.example.todo.delegate.viewBinding
 import com.example.todo.listener.OnListItemListener
 import com.example.todo.model.TodoModel
+import com.example.todo.util.gone
 import com.example.todo.util.sent
 import com.example.todo.util.showToast
+import com.example.todo.util.visible
 
 class ListFragment : Fragment(R.layout.fragment_list){
     private val binding by viewBinding(FragmentListBinding::bind)
@@ -44,7 +46,12 @@ class ListFragment : Fragment(R.layout.fragment_list){
 
         listViewModel.readAllData.observe(viewLifecycleOwner){todoList->
             adapter.setData(todoList)
+            if(todoList.isEmpty()){
+                binding.textEmpty.visible()
 
+            }else{
+                binding.textEmpty.gone()
+            }
         }
     }
 }

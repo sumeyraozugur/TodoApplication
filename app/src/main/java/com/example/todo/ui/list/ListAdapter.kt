@@ -16,7 +16,6 @@ class ListAdapter(
 
 
     class ListHolder(val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListHolder {
@@ -25,7 +24,6 @@ class ListAdapter(
     }
 
     override fun onBindViewHolder(holder: ListHolder, position: Int) {
-        //var favoritesList = TodoDatabase.getDatabase(holder.itemView.context).todoDao().getDoneList()
         val currentItem = todoList[position]
         //val customName = holder.itemView.findViewById<TextView>(R.id.itemTextTodo)
         //val textTodo = holder.binding.itemTextTodo
@@ -54,29 +52,11 @@ class ListAdapter(
                 }
             }
 
-            /*
-            Log.v("ListAdapterrr",favoritesList.value?.contains(currentItem).toString())
-
-           if (favoritesList.value?.contains(currentItem) == true) {
-                Log.v("ListAdapterrr",favoritesList.value.toString())
-               // itemListStar.setBackgroundResource(R.drawable.ic_star_border)
-            }else {
-                Log.v("ListAdapterrNot",favoritesList.value.toString())
-               //itemListStar.setBackgroundResource(R.drawable.ic_star)
-            }
-            if(listViewModel.readAllDone.value?.contains(currentItem)  ==true){
+            if (currentItem.isFav) {
                 itemListStar.setBackgroundResource(R.drawable.ic_star)
-                Log.v("ListAdapterDone", currentItem.task)
-
             }else{
-
                 itemListStar.setBackgroundResource(R.drawable.ic_star_border)
-                Log.v("ListAdapterDone", listViewModel.isFav.toString() )
-
-            }*/
-
-
-            //Log.v("ListAdapter", todoList.toString())
+            }
 
             rowLayout.setOnClickListener {
                 val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)

@@ -37,7 +37,8 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         val firstName = binding.etUpdate.text.toString()
         if (inputCheck(firstName)) {
             //Create User Object
-            val updateData = TodoModel(args.objectUpdate.id, firstName)
+            val updateData = TodoModel(args.objectUpdate.id, firstName,true)
+
             //Update Current User
             updateViewModel.updateTodo(updateData)
             requireContext().showToast("Updated Successfully!")

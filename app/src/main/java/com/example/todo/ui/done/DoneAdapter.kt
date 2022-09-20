@@ -4,11 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todo.R
 import com.example.todo.databinding.ItemDoneBinding
 import com.example.todo.listener.OnDoneItemListener
 import com.example.todo.model.TodoModel
+import com.example.todo.ui.list.ListViewModel
 
-class DoneAdapter() : RecyclerView.Adapter<DoneAdapter.DoneHolder>() {
+class DoneAdapter( private val doneViewModel: DoneViewModel) : RecyclerView.Adapter<DoneAdapter.DoneHolder>() {
     private var doneList = emptyList<TodoModel>()
 
     class DoneHolder(val binding: ItemDoneBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -24,11 +26,22 @@ class DoneAdapter() : RecyclerView.Adapter<DoneAdapter.DoneHolder>() {
         with(holder.binding){
             itemDoneText.text = currentItem.task
 
+            itemDoneStar.setOnClickListener {
+                if (currentItem.isFav) {
+                    currentItem.isFav = false
+                    //Update Current User
+                    val updateTodoObj =
+                        TodoModel(currentItem.id, currentItem.task, currentItem.isFav)
+                    doneViewModel.updateTodo(updateTodoObj)
+                } else {
+                    currentItem.isFav = true
+                    val updateTodo = TodoModel(currentItem.id, currentItem.task, currentItem.isFav)
+                    doneViewModel.updateTodo(updateTodo)
+                }
+            }
         }
 
         Log.v("DoneAdapter", doneList.toString())
-
-
     }
 
     override fun getItemCount() = doneList.size
