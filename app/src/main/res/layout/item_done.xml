@@ -7,13 +7,15 @@
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:elevation="8dp"
-    android:layout_margin="8dp">
+    android:layout_margin="2dp">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/doneCard"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

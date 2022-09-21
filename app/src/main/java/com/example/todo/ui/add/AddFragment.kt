@@ -6,11 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.todo.R
 import com.example.todo.databinding.FragmentAddBinding
 import com.example.todo.delegate.viewBinding
 import com.example.todo.model.TodoModel
+import com.example.todo.util.sent
 import com.example.todo.util.showToast
 
 
@@ -25,6 +27,10 @@ class AddFragment : Fragment(R.layout.fragment_add) {
 
         binding.btnAdd.setOnClickListener {
             insertDataToDatabase()
+        }
+        binding.imageBack.setOnClickListener {
+            Navigation.sent(it,R.id.action_addFragment_to_listFragment)
+
         }
     }
 

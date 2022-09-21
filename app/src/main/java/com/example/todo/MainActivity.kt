@@ -2,6 +2,8 @@ package com.example.todo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.core.view.MenuHost
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,16 +21,20 @@ class MainActivity : AppCompatActivity() {
 
 
         //Action for bottom Nav
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navHostFragment.navController)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        NavigationUI.setupWithNavController(
+            binding.bottomNavigationView,
+            navHostFragment.navController )
 
-       //Toolbar
+     /*   //Toolbar
         val navController: NavController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.listFragment,
+            setOf(
+                R.id.listFragment,
                 R.id.doneFragment
             )  // bu kısımda hangi sayfalarda görünmesini istemiyorum kısmı
-        )
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        )*/
     }
 }
+

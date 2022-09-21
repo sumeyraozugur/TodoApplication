@@ -22,4 +22,7 @@ interface TodoDao {
     @Query("SELECT * FROM todo_table WHERE todo_fav = 1")
     fun getDoneList(): LiveData<List<TodoModel>>
 
+    @Query("SELECT * FROM todo_table WHERE todo_task  like '%' || :searchQuery || '%'  ") //WHERE firstName  like '%' || :searchQuery || lastName like '%'
+    suspend fun searchDatabase(searchQuery: String): List<TodoModel>
+
 }

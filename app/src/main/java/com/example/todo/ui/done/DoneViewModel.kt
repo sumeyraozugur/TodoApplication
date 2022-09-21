@@ -1,6 +1,7 @@
 package com.example.todo.ui.done
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,6 +16,7 @@ class DoneViewModel(application: Application): AndroidViewModel(application){
     val readAllDone: LiveData<List<TodoModel>>
     private val repository: TodoRepository
 
+
     init {
         val todoDao = TodoDatabase.getDatabase(application).todoDao()
         repository = TodoRepository(todoDao)
@@ -26,4 +28,6 @@ class DoneViewModel(application: Application): AndroidViewModel(application){
             repository.updateTodo(todo)
         }
     }
+
+
 }

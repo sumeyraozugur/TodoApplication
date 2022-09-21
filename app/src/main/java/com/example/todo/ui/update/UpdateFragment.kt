@@ -6,9 +6,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.todo.R
 import com.example.todo.databinding.FragmentUpdateBinding
 import com.example.todo.delegate.viewBinding
@@ -24,12 +27,18 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         updateViewModel = ViewModelProvider(this)[UpdateViewModel::class.java]
         //ıt shows what you chose by safeArgs
         binding.etUpdate.setText(args.objectUpdate.task)
 
         binding.btnUpdate.setOnClickListener {
             updateItem()
+        }
+
+        binding.imageBack.setOnClickListener {
+            Navigation.sent(it,R.id.action_updateFragment_to_listFragment)
+
         }
     }
 

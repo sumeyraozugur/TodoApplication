@@ -1,6 +1,7 @@
 package com.example.todo.ui.list
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,20 +15,14 @@ import kotlinx.coroutines.launch
 class ListViewModel(application: Application): AndroidViewModel(application) {
 
     val readAllData: LiveData<List<TodoModel>>
-    val readAllDone: LiveData<List<TodoModel>>
-    private var _isFav = MutableLiveData<Boolean>()
-    val isFav: LiveData<Boolean>
-        get() = _isFav
-
     private val repository: TodoRepository
     var tempList = MutableLiveData<List<TodoModel>>()
+
 
     init {
         val todoDao = TodoDatabase.getDatabase(application).todoDao()
         repository = TodoRepository(todoDao)
         readAllData = repository.readAllData
-        readAllDone = repository.readDoneList
-
     }
 
     fun deleteTodo(user: TodoModel){
@@ -35,13 +30,17 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
             repository.deleteTodo(user)
         }
     }
+
     fun updateTodo(todo: TodoModel){
         viewModelScope.launch(Dispatchers.IO){
             repository.updateTodo(todo)
         }
     }
 
-
-
-
+    fun searchDatabase(searchQuery:String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            tempList.postValue(repository.searchDatabase(searchQuery))
+            Log.v("ViewModel", repository.searchDatabase(searchQuery).toString())
+        }
+    }
 }
