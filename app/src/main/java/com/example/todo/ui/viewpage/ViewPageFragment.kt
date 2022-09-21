@@ -20,11 +20,11 @@ class ViewPageFragment : Fragment(R.layout.fragment_view_page) {
 
 
         val bannerList = listOf(
-            ViewPageModel(R.drawable.exam, "Welcome to bazaar e-commerce app."),
-            ViewPageModel(R.drawable.homeworks, "You can find any Versace product in there."),
+            ViewPageModel(R.drawable.exam, "Welcome to TodoApp"),
+            ViewPageModel(R.drawable.homeworks, "You can plan your life easly."),
             ViewPageModel(
                 R.drawable.homeworkk,
-                "All you have to do is become a member and shop as you wish."
+                "Planning your life gives you control ."
             ),
         )
         adapter = BannerAdapter(bannerList, object : OnNavigateListener {
