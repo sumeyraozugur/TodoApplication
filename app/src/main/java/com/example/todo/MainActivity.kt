@@ -11,6 +11,8 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.todo.databinding.ActivityMainBinding
 import com.example.todo.delegate.viewBinding
+import com.example.todo.util.gone
+import com.example.todo.util.visible
 
 class MainActivity : AppCompatActivity() {
     private val binding by viewBinding (ActivityMainBinding::inflate)
@@ -27,14 +29,21 @@ class MainActivity : AppCompatActivity() {
             binding.bottomNavigationView,
             navHostFragment.navController )
 
-     /*   //Toolbar
+
+//bottom nav gone
         val navController: NavController = navHostFragment.navController
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.listFragment,
-                R.id.doneFragment
-            )  // bu kısımda hangi sayfalarda görünmesini istemiyorum kısmı
-        )*/
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.viewPageFragment -> binding.bottomNavigationView.gone()
+
+
+                else -> {
+                    binding.bottomNavigationView.visible()
+
+                }
+            }
+        }
+
     }
 }
 

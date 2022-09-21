@@ -32,13 +32,14 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
         //ıt shows what you chose by safeArgs
         binding.etUpdate.setText(args.objectUpdate.task)
 
-        binding.btnUpdate.setOnClickListener {
-            updateItem()
-        }
+        with(binding){
+            btnUpdate.setOnClickListener {
+                updateItem()
+            }
+            imageBack.setOnClickListener {
+                Navigation.sent(it,R.id.action_updateFragment_to_listFragment)
 
-        binding.imageBack.setOnClickListener {
-            Navigation.sent(it,R.id.action_updateFragment_to_listFragment)
-
+            }
         }
     }
 

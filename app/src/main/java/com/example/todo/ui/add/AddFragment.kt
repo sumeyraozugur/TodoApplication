@@ -25,13 +25,17 @@ class AddFragment : Fragment(R.layout.fragment_add) {
 
         addViewModel = ViewModelProvider(this)[AddViewModel::class.java]
 
-        binding.btnAdd.setOnClickListener {
-            insertDataToDatabase()
-        }
-        binding.imageBack.setOnClickListener {
-            Navigation.sent(it,R.id.action_addFragment_to_listFragment)
+        with(binding){
+            btnAdd.setOnClickListener {
+                insertDataToDatabase()
+            }
+            imageBack.setOnClickListener {
+                Navigation.sent(it,R.id.action_addFragment_to_listFragment)
+
+            }
 
         }
+
     }
 
     private fun insertDataToDatabase() {

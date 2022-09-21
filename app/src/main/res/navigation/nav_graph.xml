@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/viewPageFragment">
 
     <fragment
         android:id="@+id/listFragment"
@@ -42,4 +42,13 @@
         android:name="com.example.todo.ui.done.DoneFragment"
         android:label="Done"
         tools:layout="@layout/fragment_done" />
+    <fragment
+        android:id="@+id/viewPageFragment"
+        android:name="com.example.todo.ui.viewpage.ViewPageFragment"
+        android:label=""
+        tools:layout="@layout/fragment_view_page" >
+        <action
+            android:id="@+id/action_viewPageFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
 </navigation>
