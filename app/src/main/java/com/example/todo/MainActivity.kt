@@ -3,16 +3,16 @@ package com.example.todo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.view.MenuHost
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
+import androidx.work.*
 import com.example.todo.databinding.ActivityMainBinding
 import com.example.todo.delegate.viewBinding
 import com.example.todo.util.gone
 import com.example.todo.util.visible
+import com.example.todo.workmanager.TodoWorker
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     private val binding by viewBinding (ActivityMainBinding::inflate)
@@ -44,6 +44,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(Constant.todoInList){
+            startWorkManager()
+        }
+    else{
+        WorkManager.getInstance(this@MainActivity).cancelAllWork()
+        }
+    }
+    private fun startWorkManager(){
+        Log.v("WorkManager","WellDone")
+        val constraint = Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
+            .build()
+        val myWorkRequest: PeriodicWorkRequest = PeriodicWorkRequestBuilder<TodoWorker>(10,
+            TimeUnit.MINUTES)
+            .setInitialDelay(15, TimeUnit.MINUTES)
+            .setConstraints(constraint)
+            .build()
+        WorkManager.getInstance(this@MainActivity).enqueueUniquePeriodicWork(
+            "com.example.todo.workmanager.TodoWorker",
+            ExistingPeriodicWorkPolicy.KEEP,myWorkRequest as PeriodicWorkRequest
+        )
     }
 }
 

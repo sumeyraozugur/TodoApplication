@@ -7,14 +7,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.todo.MainActivity
+import com.example.todo.Constant
 import com.example.todo.R
 import com.example.todo.databinding.FragmentListBinding
 import com.example.todo.delegate.viewBinding
@@ -99,9 +98,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             adapter.setData(todoList)
             if (todoList.isEmpty()) {
                 binding.textEmpty.visible()
+                Constant.todoInList = false
 
             } else {
                 binding.textEmpty.gone()
+                Constant.todoInList = true
             }
         }
     }
