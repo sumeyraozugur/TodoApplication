@@ -1,8 +1,8 @@
 package com.example.todo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -15,7 +15,7 @@ import com.example.todo.workmanager.TodoWorker
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
-    private val binding by viewBinding (ActivityMainBinding::inflate)
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         NavigationUI.setupWithNavController(
             binding.bottomNavigationView,
-            navHostFragment.navController )
+            navHostFragment.navController
+        )
 
 
 //bottom nav gone
@@ -35,39 +36,37 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.viewPageFragment -> binding.bottomNavigationView.gone()
-
-
+                R.id.splashFragment -> binding.bottomNavigationView.gone()
                 else -> {
                     binding.bottomNavigationView.visible()
-
                 }
             }
         }
-
     }
 
     override fun onStop() {
         super.onStop()
-        if(Constant.todoInList){
+        if (Constant.todoInList) {
             startWorkManager()
-        }
-    else{
-        WorkManager.getInstance(this@MainActivity).cancelAllWork()
+        } else {
+            WorkManager.getInstance(this@MainActivity).cancelAllWork()
         }
     }
-    private fun startWorkManager(){
-        Log.v("WorkManager","WellDone")
+
+    private fun startWorkManager() {
+        Log.v("WorkManager", "WellDone")
         val constraint = Constraints.Builder()
             .setRequiresBatteryNotLow(true)
             .build()
-        val myWorkRequest: PeriodicWorkRequest = PeriodicWorkRequestBuilder<TodoWorker>(10,
+        val myWorkRequest: PeriodicWorkRequest = PeriodicWorkRequestBuilder<TodoWorker>(
+            10,
             TimeUnit.MINUTES)
-            .setInitialDelay(15, TimeUnit.MINUTES)
+            .setInitialDelay(60, TimeUnit.MINUTES)
             .setConstraints(constraint)
             .build()
         WorkManager.getInstance(this@MainActivity).enqueueUniquePeriodicWork(
-            "com.example.todo.workmanager.TodoWorker",
-            ExistingPeriodicWorkPolicy.KEEP,myWorkRequest as PeriodicWorkRequest
+            "com.example.todo.workmanager.TodoWorker", //Birkaç kez açsanda devam eden işlemin devamını sağlar.
+            ExistingPeriodicWorkPolicy.KEEP, myWorkRequest as PeriodicWorkRequest
         )
     }
 }

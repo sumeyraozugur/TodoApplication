@@ -22,4 +22,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">74dp</item>
     </style>
+
+    <style name="CardViewStye">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="android:layout_margin">@dimen/_5sdp</item>
+    </style>
 </resources>

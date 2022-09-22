@@ -5,18 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:padding="8dp">
+    android:layout_margin="@dimen/_6sdp"
+    android:padding="@dimen/_6sdp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/listCard"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="5dp"
+        app:cardCornerRadius="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/CardViewStye">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/itemDeleteImage"
-                android:layout_width="57dp"
-                android:layout_height="38dp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_34sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -40,23 +38,25 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Sumeyra"
-                android:textSize="24sp"
+                android:textSize="@dimen/_20ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.382"
+                app:layout_constraintHorizontal_bias="0.306"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.521" />
 
             <ImageView
                 android:id="@+id/itemListStar"
-                android:layout_width="38dp"
-                android:layout_height="33dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/itemDeleteImage"
-                app:layout_constraintHorizontal_bias="0.973"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.476"
                 app:srcCompat="@drawable/ic_star_border" />
 
 

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="252dp"
         android:text="Your Done List is Empty!!!"
-        android:textSize="16sp"
+        android:textSize="@dimen/_16sdp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"

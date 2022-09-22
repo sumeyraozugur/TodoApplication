@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--arka planı nasıl olacak önce koyu sonra açılarak gidecek bu renk. -->
+
+    <gradient android:angle="90"
+        android:startColor="@color/start_blue"
+        android:centerColor="@color/center_blue"
+        android:endColor="@color/end_blue"
+
+        />
+
+</shape>
