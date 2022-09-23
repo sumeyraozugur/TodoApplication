@@ -5,5 +5,4 @@ import com.example.todo.model.TodoModel
 interface OnListItemListener {
     fun delete(todo:TodoModel)
 
-
 }

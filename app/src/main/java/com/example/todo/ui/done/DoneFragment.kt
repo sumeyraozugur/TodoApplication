@@ -2,22 +2,13 @@ package com.example.todo.ui.done
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo.R
 import com.example.todo.databinding.FragmentDoneBinding
 import com.example.todo.delegate.viewBinding
-import com.example.todo.listener.OnDoneItemListener
-import com.example.todo.model.TodoModel
 import com.example.todo.util.gone
 import com.example.todo.util.visible
 
@@ -38,9 +29,9 @@ class DoneFragment : Fragment(R.layout.fragment_done) {
         doneViewModel.readAllDone.observe(viewLifecycleOwner) { list ->
             adapter.setData(list)
             Log.v("DoneFragment", list.toString())
-            if(list.isEmpty()){
+            if (list.isEmpty()) {
                 binding.textEmpty.visible()
-            }else{
+            } else {
                 binding.textEmpty.gone()
             }
 

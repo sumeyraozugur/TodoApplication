@@ -25,6 +25,12 @@ class BannerAdapter(
         holder.binding.apply {
             itemBannerImage.setImageResource(banner.imageResId) //setBackgroundResource(banner.imageResId)
             itemBannerText.text = banner.text
+
+            if (position == bannerList.size-1)
+                itemBtn.visibility = View.VISIBLE
+                itemBtn.setOnClickListener {
+                onNavigateListener.navigate()
+            }
         }
     }
 

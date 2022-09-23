@@ -5,6 +5,8 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -28,7 +30,10 @@ class UpdateFragment : Fragment(R.layout.fragment_update) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        updateViewModel = ViewModelProvider(this)[UpdateViewModel::class.java]
+        //updateViewModel = ViewModelProvider(this)[UpdateViewModel::class.java]  or
+        val tempViewModel:UpdateViewModel by viewModels()
+        updateViewModel = tempViewModel
+
         //ıt shows what you chose by safeArgs
         binding.etUpdate.setText(args.objectUpdate.task)
 

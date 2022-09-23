@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         val myWorkRequest: PeriodicWorkRequest = PeriodicWorkRequestBuilder<TodoWorker>(
             10,
             TimeUnit.MINUTES)
-            .setInitialDelay(60, TimeUnit.MINUTES)
+          //  .setInitialDelay(60, TimeUnit.MINUTES)
             .setConstraints(constraint)
             .build()
         WorkManager.getInstance(this@MainActivity).enqueueUniquePeriodicWork(
