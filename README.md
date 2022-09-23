@@ -59,6 +59,17 @@
   </div>
 
 
+:star2: :star2: :star2: <img width="171" alt="workManager" src="https://user-images.githubusercontent.com/41166029/191992663-061a8648-769e-40b1-b3f9-8f12a2043977.png"> If you add something  in todo list, you will be notified every 1 hour after closing the app. The notification will continue until you delete what you added.
+
+
+<img align=center src=https://user-images.githubusercontent.com/41166029/191983279-92708c94-b2d8-4bd8-8481-efeb8b40816a.mp4 width="200" hspace="5"/>
+
+
+
+
+
+
+
 
 
 <!-- <img src=https://user-images.githubusercontent.com/41166029/191954232-2b211898-5d58-465d-93af-f16b0c4352c5.gif width="200" hspace="5"/> -->
